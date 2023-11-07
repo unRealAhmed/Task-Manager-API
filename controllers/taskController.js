@@ -1,8 +1,8 @@
 const Task = require('../models/taskModel')
 const asyncHandler = require('../utilities/asyncHandler')
+const AppError = require('../utilities/appErrors')
 
-
-exports.getAllTasks = asyncHandler(async (req, res) => {
+exports.getAllTasks = asyncHandler(async (req, res, next) => {
 
   const tasks = await Task.find()
 
@@ -13,9 +13,13 @@ exports.getAllTasks = asyncHandler(async (req, res) => {
   })
 })
 
-exports.getTask = asyncHandler(async (req, res) => {
+exports.getTask = asyncHandler(async (req, res, next) => {
 
   const task = await Task.findById(req.params.id)
+
+  if (!task) {
+    return next(new AppError("No task found with that ID!", 404))
+  }
 
   res.status(200).json({
     status: 'success',
@@ -23,7 +27,7 @@ exports.getTask = asyncHandler(async (req, res) => {
   })
 })
 
-exports.createTask = asyncHandler(async (req, res) => {
+exports.createTask = asyncHandler(async (req, res, next) => {
 
   const newTask = await Task.create(req.body)
 
@@ -33,12 +37,16 @@ exports.createTask = asyncHandler(async (req, res) => {
   })
 })
 
-exports.updateTask = asyncHandler(async (req, res) => {
+exports.updateTask = asyncHandler(async (req, res, next) => {
 
   const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
   })
+
+  if (!updatedTask) {
+    return next(new AppError('No task found with that ID', 404));
+  }
 
   res.status(200).json({
     status: 'success',
@@ -46,9 +54,13 @@ exports.updateTask = asyncHandler(async (req, res) => {
   })
 })
 
-exports.deleteTask = asyncHandler(async (req, res) => {
+exports.deleteTask = asyncHandler(async (req, res, next) => {
 
-  await Task.findByIdAndDelete(req.params.id)
+  const task = await Task.findByIdAndDelete(req.params.id)
+
+  if (!task) {
+    return next(new AppError('No task found with that ID', 404));
+  }
 
   res.status(204).json({
     status: 'success',

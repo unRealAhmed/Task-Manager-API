@@ -37,11 +37,12 @@ const sendProdErr = (err, res) => {
   } else {
     res.status(err.statusCode).json({
       status: "error",
-      message: "Something went very wrong",
+      message: err.message,
       error: err,
     });
   }
 };
+
 
 // Error Controller
 
@@ -49,17 +50,16 @@ const sendProdErr = (err, res) => {
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
-
+  // console.log(err.message);
   if (process.env.NODE_ENV === "development") {
     sendDevErr(err, res);
   }
 
   if (process.env.NODE_ENV === "production") {
     let error = JSON.parse(JSON.stringify(err))
-
+    error.message = err.message
     if (error.name === "CastError") error = handleCastError(error);
     if (error.name === "ValidationError") error = handleValidationError(error);
-
     sendProdErr(error, res);
   }
 };

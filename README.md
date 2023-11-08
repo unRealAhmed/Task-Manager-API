@@ -67,3 +67,7 @@ For detailed information about the routes, please refer to the app's source code
 ## Error Handling
 
 The application handles errors gracefully using custom error classes and middleware. Errors are categorized into "fail" (client errors) and "error" (server errors), and appropriate responses are provided based on the environment (development/production)
+
+GitHub : [Ahmed Sayed](https://github.com/unRealAhmed)
+
+Happy coding! 🚀

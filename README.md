@@ -48,9 +48,9 @@ npm install
 
 # Create a .env file and define the necessary environment variables
 
-echo "DATABASE_URL=mongodb://<username>:<password>@<cluster-url>/<database-name>" > .env
-echo "DATABASE_PASSWORD=your-db-password" >> .env
-echo "PORT=8000" >> .env
+- "DATABASE_URL=mongodb://<username>:<password>@<cluster-url>/<database-name>" > .env
+- "DATABASE_PASSWORD=your-db-password" >> .env
+- "PORT=8000" >> .env
 
 ## Routes
 

@@ -1,5 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
+// Define a Mongoose schema for tasks
 const taskSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -11,8 +12,10 @@ const taskSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-})
+});
 
-const Task = mongoose.model('Task', taskSchema)
+// Create a Mongoose model for tasks using the schema
+const Task = mongoose.model('Task', taskSchema);
 
-module.exports = Task
+// Export the Task model
+module.exports = Task;

@@ -30,7 +30,7 @@ Before you begin, ensure you have met the following requirements:
 - MongoDB installed and running.
 - A `.env` file with the necessary environment variables, including `DATABASE_URL` and `DATABASE_PASSWORD`.
 
-## Usage
+## Installation
 
 Clone this repository:
 
@@ -52,7 +52,7 @@ echo "DATABASE_URL=mongodb://<username>:<password>@<cluster-url>/<database-name>
 echo "DATABASE_PASSWORD=your-db-password" >> .env
 echo "PORT=8000" >> .env
 
-## Usage
+## Routes
 
 After installation, the app will be running on http://localhost:8000. You can use tools like Postman or make HTTP requests directly to the defined routes:
 

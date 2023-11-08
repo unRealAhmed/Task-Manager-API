@@ -38,29 +38,31 @@ Clone this repository:
 git clone https://github.com/unRealAhmed/Task-Manager-API
 ```
 
-## Install project dependencies
+# Navigate to the project directory
+
+cd task-manager-app
+
+# Install project dependencies
 
 npm install
 
-## Create a .env file in the project root directory and define your environment variables
+# Create a .env file and define the necessary environment variables
 
-DATABASE_URL=mongodb://<username>:<password>@<cluster-url>/<database-name>
-DATABASE_PASSWORD=your-db-password
-PORT=8000
+echo "DATABASE_URL=mongodb://<username>:<password>@<cluster-url>/<database-name>" > .env
+echo "DATABASE_PASSWORD=your-db-password" >> .env
+echo "PORT=8000" >> .env
 
 ## Usage
 
-After installation, the app will be running on http://localhost:8000. You can use tools like Postman or make HTTP requests directly to the defined routes
+After installation, the app will be running on http://localhost:8000. You can use tools like Postman or make HTTP requests directly to the defined routes:
 
-## Routes
+- `GET /api/v1/tasks` - Retrieve a list of all tasks.
+- `POST /api/v1/tasks` - Create a new task.
+- `GET /api/v1/tasks/:id` - Retrieve a single task by ID.
+- `PATCH /api/v1/tasks/:id` - Update a task by ID.
+- `DELETE /api/v1/tasks/:id` - Delete a task by ID.
 
-GET /api/v1/tasks - Retrieve a list of all tasks.
-POST /api/v1/tasks - Create a new task
-GET /api/v1/tasks/:id - Retrieve a single task by ID.
-PATCH /api/v1/tasks/:id - Update a task by ID
-DELETE /api/v1/tasks/:id - Delete a task by ID
-
-For detailed information about the routes, please refer to the app's source code or the documentation
+For detailed information about the routes, please refer to the app's source code or the documentation.
 
 ## Error Handling
 
